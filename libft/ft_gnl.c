@@ -6,7 +6,7 @@
 /*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 19:54:08 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/15 21:30:23 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/15 21:49:28 by joaopedr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ char	*get_next_line(int fd)
 	t_buffer		*current;
 	char			*line;
 
+	if (fd == -1 && buffer_list)
+		ft_clear_gnl_buffer(&buffer_list);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	current = buffer_list;

@@ -6,13 +6,14 @@
 /*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 20:27:06 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/15 21:25:12 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/15 21:50:36 by joaopedr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -32,6 +33,28 @@ typedef struct s_buffer
 	char			*content;
 	struct s_buffer	*next;
 }					t_buffer;
+
+typedef struct s_fmt
+{
+	int				minus;
+	int				zero;
+	int				hash;
+	int				plus;
+	int				space;
+	int				width;
+	int				precision;
+	int				has_precision;
+	char			conv;
+}					t_fmt;
+
+typedef struct s_nfmt
+{
+	int				len;
+	int				zpad;
+	int				sign;
+	int				prefix;
+	int				pad;
+}					t_nfmt;
 
 int					ft_isalpha(int argument);
 int					ft_isdigit(int argument);
@@ -91,5 +114,28 @@ size_t				ft_strlen(const char *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strjoin(char const *s1, char const *s2);
 t_buffer			*ft_create_buffer(int fd, t_buffer *buffer_list);
+void				ft_clear_gnl_buffer(t_buffer **buffer_list);
+int					ft_printf(const char *format, ...);
+int					ft_putptr(void *ptr);
+int					ft_puthex(unsigned long number, char format);
+int					ft_putunbr(unsigned int number);
+int					ft_putnbr(int number);
+int					ft_putstr(char *str);
+int					ft_putchar(char c);
+
+int					pf_max(int a, int b);
+int					pf_repeat(char c, int n);
+int					pf_putnstr(const char *s, int n);
+int					pf_u64_to_base(unsigned long long n, const char *base,
+						char *buf);
+void				pf_init_fmt(t_fmt *fmt);
+void				pf_parse(const char **format, t_fmt *fmt);
+int					pf_print_char(char c, t_fmt *fmt);
+int					pf_print_string(char *s, t_fmt *fmt);
+int					pf_print_pointer(void *ptr, t_fmt *fmt);
+int					pf_print_signed(long value, t_fmt *fmt);
+int					pf_print_unsigned(unsigned long long value, t_fmt *fmt,
+						char conv);
+int					pf_dispatch(t_fmt *fmt, va_list *args);
 
 #endif

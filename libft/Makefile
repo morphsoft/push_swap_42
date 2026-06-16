@@ -6,7 +6,10 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
 	ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 	ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strrchr.c ft_strtrim.c ft_substr.c \
-	ft_strnstr.c ft_tolower.c ft_toupper.c ft_strncmp.c ft_gnl.c
+	ft_strnstr.c ft_tolower.c ft_toupper.c ft_strncmp.c ft_gnl.c ft_pf_parse.c \
+	ft_pf_dispatch.c ft_pf_print_cs.c ft_pf_print_num.c ft_pf_print_ptr.c \
+	ft_putchar.c ft_putstr.c ft_putnbr.c ft_putunbr.c ft_puthex.c ft_putptr.c \
+	ft_clear_gnl_buffer.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
