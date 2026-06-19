@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 02:44:00 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/16 02:55:18 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/19 19:37:57 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 int		input_check(char ***argv, unsigned char *flags);
 int		allocate_initial_stack(t_stack **stack_a, char **argv);
 float	compute_disorder(t_stack *stack_a);
-void	simple_sort(t_stack **stack_a, unsigned char flags);
-void	medium_sort(t_stack **stack_a, unsigned char flags);
-void	complex_sort(t_stack **stack_a, unsigned char flags);
+void	simple_sort(t_stack stack_a, unsigned char flags, double disorder);
+void	medium_sort(t_stack **stack_a, unsigned char flags, double disorder);
+void	complex_sort(t_stack **stack_a, unsigned char flags, double disorder);
 
 #endif

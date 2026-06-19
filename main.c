@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 21:48:04 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/06/16 03:05:22 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/19 19:38:12 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack			*stack_a;
-	float			disorder;
-	unsigned char	flags;
-	t_flags			flag_state;
+	t_stack				*stack_a;
+	float				disorder;
+	unsigned char		flags;
+	t_flags				flag_state;
 	t_algorithm_type	algorithm;
 
 	if (input_check(&argv, &flags) || !allocate_initial_stack(stack_a, argv))
@@ -28,9 +28,9 @@ int	main(int argc, char **argv)
 	disorder = compute_disorder(stack_a);
 	algorithm = resolve_algorithm(&flag_state, disorder);
 	if (algorithm == ALGO_SIMPLE)
-		simple_sort(&stack_a, flags);
+		simple_sort(&stack_a, flags, disorder);
 	else if (algorithm == ALGO_MEDIUM)
-		medium_sort(&stack_a, flags);
+		medium_sort(&stack_a, flags, disorder);
 	else
-		complex_sort(&stack_a, flags);
+		complex_sort(&stack_a, flags, disorder);
 }
