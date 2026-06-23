@@ -1,70 +1,77 @@
-# include "push_swap_utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/23 15:52:49 by hvaini-d          #+#    #+#             */
+/*   Updated: 2026/06/23 15:55:51 by hvaini-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	simple_sort(t_stack stack_a, unsigned char flags, double disorder)
+#include "push_swap_utils.h"
+
+void	simple_sort(t_stack **stack_a, unsigned char flags, double disorder)
 {
-	int		op_count[8];
-	char	**ops;
+	int		op_count[11];
+	char	*log;
+	t_ops	ops;
 
-
-	cocktail_sort(&stack_a, &op_count, &ops);
+	log = ft_strdup("");
+	ops.count = op_count;
+	ops.log = &log;
+	selection_sort(stack_a, &ops);
 	if (flags & FLAG_BENCHMARK)
-		create_benchmark("simple / 0(n2)", op_count, ops, disorder);
+		create_benchmark("simple / 0(n2)", op_count, log, disorder);
 	else
-		ft_printf("%s\n", ops);
+		ft_printf("%s\n", log);
+	free(log);
 }
 
-// Um pouquinho mais eficiente que o bubble, o cocktail é bem maneiro
-// Ele basicamente faz a mesma coisa que o bubble
-// só que mexe pra direita ou pra esquerda em vez de ser linear
-void	cocktail_sort(t_stack *stk, int **op_count, char ***ops)
+static void	rotate_min_to_top(t_stack **stack_a, t_ops *ops)
 {
-	int	left;
-	int	right;
-	int	i;
-	int	size;
+	t_stack	*index;
+	t_stack	*min_node;
+	int		size;
+	int		min_pos;
+	int		i;
 
-	size = ft_lstsize(stk);
-	left = 0;
-	right = size - 1;
-	while (left < right)
+	index = *stack_a;
+	min_node = *stack_a;
+	size = ft_stack_size(*stack_a);
+	i = 0;
+	min_pos = 0;
+	while (i < size)
 	{
-		i = left - 1;
-		while (++i < right)
+		if (index->rank < min_node->rank)
 		{
-			apply_swap(stk, op_count, ops);
-			apply_rotate(stk, op_count, ops);
+			min_node = index;
+			min_pos = i;
 		}
-		right--;
-		i = right - 1;
-		while (--i > left)
-		{
-			apply_reverse_rotate(stk, op_count, ops);
-			apply_swap(stk, op_count, ops);
-		}
-		left++;
+		index = index->next;
+		i++;
 	}
+	if (min_pos <= size / 2)
+		while (min_pos-- > 0)
+			apply_rotate(stack_a, ops);
+	else
+		while (min_pos++ < size)
+			apply_reverse_rotate(stack_a, ops);
 }
 
-void	apply_swap(t_stack **stack, int **op_count, char ***ops)
+void	selection_sort(t_stack **stack_a, t_ops *ops)
 {
-	if ((*stack)->value > (*stack)->next->value)
+	t_stack	*stack_b;
+	int		size;
+
+	stack_b = NULL;
+	size = ft_stack_size(*stack_a);
+	while (size-- > 0)
 	{
-		ft_swap(stack, SWAP_A);
-		*ops = ft_strjoin(*ops, " sa");
-		*op_count[SWAP_A] += 1;
+		rotate_min_to_top(stack_a, ops);
+		apply_push(stack_a, &stack_b, ops);
 	}
-}
-
-void	apply_rotate(t_stack **stk, int **op_count, char ***ops)
-{
-	ft_rotate(stk, ROTATE_A);
-	*ops = ft_strjoin(*ops, " ra");
-	*op_count[ROTATE_A] += 1;
-}
-
-void	apply_reverse_rotate(t_stack **stk, int **op_count, char ***ops)
-{
-	ft_reverse_rotate(stk, REVERSE_ROTATE_A);
-	*ops = ft_strjoin(*ops, " rra");
-	*op_count[REVERSE_ROTATE_A] += 1;
+	while (stack_b)
+		apply_push_back(&stack_b, stack_a, ops);
 }

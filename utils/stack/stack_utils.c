@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 03:20:00 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/16 02:53:58 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/23 16:49:00 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "libft.h"
 
 t_stack	*ft_stack_last(t_stack *stack)
 {

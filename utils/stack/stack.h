@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 02:58:00 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/16 02:53:29 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/23 15:59:35 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
+
+typedef enum e_limits {
+	UINT_MAX = 4294967295,
+	INT_MAX = 2147483647,
+	INT_MIN = -2147483648,
+}	t_limits;
 
 typedef enum e_operation_types {
 	SWAP_A,
@@ -25,11 +31,12 @@ typedef enum e_operation_types {
 	REVERSE_ROTATE_A,
 	REVERSE_ROTATE_B,
 	REVERSE_ROTATE_BOTH
-}   t_operation_type;
+}	t_operation_type;
 
 typedef struct s_stack
 {
 	int				value;
+	unsigned int	rank;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }   t_stack;

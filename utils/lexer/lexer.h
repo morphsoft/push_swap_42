@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 02:58:00 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/16 02:55:03 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/23 14:03:11 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ typedef enum e_flag_mask {
 	FLAG_COMPLEX = 1 << 2,
 	FLAG_ADAPTIVE = 1 << 3,
 	FLAG_BENCHMARK = 1 << 4,
-}   t_flag_mask;
+}	t_flag_mask;
 
 typedef enum e_algorithm_type {
 	ALGO_SIMPLE,
 	ALGO_MEDIUM,
 	ALGO_COMPLEX
-}   t_algorithm_type;
+}	t_algorithm_type;
 
 typedef struct s_flags
 {
@@ -35,7 +35,7 @@ typedef struct s_flags
 	unsigned char	complex;
 	unsigned char	adaptive;
 	unsigned char	benchmark;
-}   t_flags;
+}	t_flags;
 
 int		parse_flags_mask(const char *flags_str, unsigned char *flags);
 int		has_simple_flag(unsigned char flags);

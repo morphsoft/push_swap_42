@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 20:27:06 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/15 21:50:36 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/06/23 16:14:42 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int					ft_putunbr(unsigned int number);
 int					ft_putnbr(int number);
 int					ft_putstr(char *str);
 int					ft_putchar(char c);
-
+int					ft_sqrt(int nb);
 int					pf_max(int a, int b);
 int					pf_repeat(char c, int n);
 int					pf_putnstr(const char *s, int n);
