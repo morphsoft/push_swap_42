@@ -38,6 +38,7 @@ typedef struct s_flags
 }	t_flags;
 
 int		parse_flags_mask(const char *flags_str, unsigned char *flags);
+int		apply_option(unsigned char *flags, const char *s, int *len);
 int		has_simple_flag(unsigned char flags);
 int		has_medium_flag(unsigned char flags);
 int		has_complex_flag(unsigned char flags);

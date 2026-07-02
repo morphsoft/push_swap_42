@@ -19,6 +19,7 @@ void	simple_sort(t_stack **stack_a, unsigned char flags, double disorder)
 	t_ops	ops;
 
 	log = ft_strdup("");
+	ft_bzero(op_count, sizeof(op_count));
 	ops.count = op_count;
 	ops.log = &log;
 	selection_sort(stack_a, &ops);

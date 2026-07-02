@@ -8,6 +8,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strrchr.c ft_strtrim.c ft_substr.c \
 	ft_strnstr.c ft_tolower.c ft_toupper.c ft_strncmp.c ft_gnl.c ft_pf_parse.c \
 	ft_pf_dispatch.c ft_pf_print_cs.c ft_pf_print_num.c ft_pf_print_ptr.c \
+	ft_pf_utils.c ft_printf.c ft_sqrt.c \
 	ft_putchar.c ft_putstr.c ft_putnbr.c ft_putunbr.c ft_puthex.c ft_putptr.c \
 	ft_clear_gnl_buffer.c
 OBJS = $(SRCS:.c=.o)

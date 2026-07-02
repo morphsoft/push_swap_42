@@ -26,12 +26,6 @@ typedef struct s_ops
 	char	**log;
 }	t_ops;
 
-typedef struct s_chunk
-{
-	unsigned int	min;
-	unsigned int	max;
-}	t_chunk;
-
 void	apply_swap(t_stack **stack, t_ops *ops);
 void	apply_rotate(t_stack **stk, t_ops *ops);
 void	apply_reverse_rotate(t_stack **stk, t_ops *ops);
@@ -41,11 +35,13 @@ void	apply_push(t_stack **stack_a, t_stack **stack_b, t_ops *ops);
 void	apply_push_back(t_stack **stack_b, t_stack **stack_a, t_ops *ops);
 
 void	sort_three(t_stack **stack_a, t_ops *ops);
-void	sort_five(t_stack **stack_a, t_ops *ops);
 void	selection_sort(t_stack **stack_a, t_ops *ops);
+void	lis_sort(t_stack **stack_a, t_ops *ops);
 
 void	push_non_lis(t_stack **a, t_stack **b, int *in_lis, t_ops *ops);
 int		find_best(t_stack **a, t_stack **b);
 void	insert_element(t_stack **a, t_stack **b, int best, t_ops *ops);
+
+void	create_benchmark(char *name, int *op_count, char *ops, double dis);
 
 #endif

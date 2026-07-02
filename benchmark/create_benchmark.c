@@ -10,11 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap_utils.h"
+#include "push_swap_utils.h"
 
-void	create_benchmark(char **name, int **op_count, char **ops, double dis)
+static int	sum_ops(int *op_count)
 {
-	ft_printf("[bench] disorder:   %d\n", dis);
+	int	total;
+	int	i;
+
+	total = 0;
+	i = 0;
+	while (i < 11)
+		total += op_count[i++];
+	return (total);
+}
+
+void	create_benchmark(char *name, int *op_count, char *ops, double dis)
+{
+	(void)ops;
+	ft_printf("[bench] disorder:   %i%%\n", (int)(dis * 100));
 	ft_printf("[bench] strategy:   %s\n", name);
 	ft_printf("[bench] total_ops:  %i\n", sum_ops(op_count));
 	ft_printf("[bench] sa: %i  sb: %i  ss: %i  pa: %i  pb: %i\n",

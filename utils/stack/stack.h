@@ -42,6 +42,7 @@ typedef struct s_stack
 }   t_stack;
 
 t_stack	*create_stack(int value);
+void	normalize_stack(t_stack *stack);
 void	free_stack(t_stack *stack);
 void	ft_push(t_stack **stack, int value, t_operation_type type);
 int		ft_pop(t_stack **stack, int *value);

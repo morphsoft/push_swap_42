@@ -15,6 +15,15 @@
 
 # include "libft/libft.h"
 
-void	ft_printerr(const char *format, ...);
+enum e_error_codes
+{
+    ERROR_NONE = 0,
+    ERROR_INVALID_INPUT = 1,
+    ERROR_MEMORY_ALLOCATION = 2,
+    ERROR_UNKNOWN = 3
+};
+
+int     trigger_error(int error_code);
+void	ft_printerr(const char *message);
 
 #endif

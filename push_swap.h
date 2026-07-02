@@ -16,6 +16,8 @@
 # include "libft/libft.h"
 # include "utils/push_swap_utils.h"
 # include "sorting_operations/sorting_operations.h"
+# include "utils/error_handeling/error_handeling.h"
+
 
 int		input_check(char ***argv, unsigned char *flags);
 int		allocate_initial_stack(t_stack **stack_a, char **argv);
@@ -23,5 +25,6 @@ float	compute_disorder(t_stack *stack_a);
 void	simple_sort(t_stack **stack_a, unsigned char flags, double disorder);
 void	medium_sort(t_stack **stack_a, unsigned char flags, double disorder);
 void	complex_sort(t_stack **stack_a, unsigned char flags, double disorder);
+void	super_small_sort(t_stack **stack_a, unsigned char flags, double disorder);
 
 #endif

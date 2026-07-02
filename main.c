@@ -12,25 +12,35 @@
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+static void	dispatch_sort(t_stack **a, unsigned char flags, t_flags *state,
+		float disorder)
 {
-	t_stack				*stack_a;
-	float				disorder;
-	unsigned char		flags;
-	t_flags				flag_state;
 	t_algorithm_type	algorithm;
 
-	if (input_check(&argv, &flags) || !allocate_initial_stack(stack_a, argv))
-		return (NULL);
-	if (!build_flags_state(flags, &flag_state))
-		return (1);
-
-	disorder = compute_disorder(stack_a);
-	algorithm = resolve_algorithm(&flag_state, disorder);
-	if (algorithm == ALGO_SIMPLE)
-		simple_sort(&stack_a, flags, disorder);
+	algorithm = resolve_algorithm(state, disorder);
+	if (algorithm == ALGO_SIMPLE && ft_stack_size(*a) <= 5)
+		super_small_sort(a, flags, disorder);
+	else if (algorithm == ALGO_SIMPLE)
+		simple_sort(a, flags, disorder);
 	else if (algorithm == ALGO_MEDIUM)
-		medium_sort(&stack_a, flags, disorder);
+		medium_sort(a, flags, disorder);
 	else
-		complex_sort(&stack_a, flags, disorder);
+		complex_sort(a, flags, disorder);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack			*stack_a;
+	unsigned char	flags;
+	t_flags			flag_state;
+
+	(void)argc;
+	if (input_check(&argv, &flags) || !allocate_initial_stack(&stack_a, argv))
+		return (trigger_error(ERROR_INVALID_INPUT));
+	if (!build_flags_state(flags, &flag_state))
+		return (trigger_error(ERROR_INVALID_INPUT));
+	if (!ft_is_sorted(stack_a))
+		dispatch_sort(&stack_a, flags, &flag_state, compute_disorder(stack_a));
+	free_stack(stack_a);
+	return (0);
 }

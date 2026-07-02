@@ -12,8 +12,15 @@
 
 #include "error_handeling.h"
 
+int	trigger_error(int error_code)
+{
+	(void)error_code;
+	ft_printerr("Error");
+	return (1);
+}
+
 void	ft_printerr(const char *message)
 {
 	if (message)
-		ft_putendl_fd(message, 2);
+		ft_putendl_fd((char *)message, 2);
 }

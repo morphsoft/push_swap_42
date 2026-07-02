@@ -63,3 +63,24 @@ int	ft_stack_max(t_stack *stack, int *max_value)
 	}
 	return (1);
 }
+
+int	ft_is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+	int		size;
+	int		i;
+
+	if (!stack)
+		return (1);
+	size = ft_stack_size(stack);
+	current = stack;
+	i = 0;
+	while (i < size - 1)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+		i++;
+	}
+	return (1);
+}

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex.c                                          :+:      :+:    :+:   */
+/*   super_small.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,46 +12,56 @@
 
 #include "push_swap_utils.h"
 
-static int	count_bits(unsigned int max_rank)
+static void	push_smallest(t_stack **a, t_stack **b, t_ops *ops)
 {
-	int	bits;
-
-	bits = 0;
-	while (max_rank >> bits)
-		bits++;
-	return (bits);
-}
-
-static void	radix_sort(t_stack **stack_a, t_ops *ops)
-{
-	t_stack	*stack_b;
+	t_stack	*index;
+	t_stack	*min;
 	int		size;
-	int		bit;
-	int		bits;
+	int		pos;
 	int		i;
 
-	stack_b = NULL;
-	size = ft_stack_size(*stack_a);
-	bits = count_bits((unsigned int)(size - 1));
-	bit = 0;
-	while (bit < bits)
+	index = *a;
+	min = *a;
+	size = ft_stack_size(*a);
+	pos = 0;
+	i = 0;
+	while (i < size)
 	{
-		i = 0;
-		while (i < size && *stack_a)
+		if (index->rank < min->rank)
 		{
-			if (((*stack_a)->rank >> bit) & 1)
-				apply_rotate(stack_a, ops);
-			else
-				apply_push(stack_a, &stack_b, ops);
-			i++;
+			min = index;
+			pos = i;
 		}
-		while (stack_b)
-			apply_push_back(&stack_b, stack_a, ops);
-		bit++;
+		index = index->next;
+		i++;
 	}
+	if (pos <= size / 2)
+		while (pos-- > 0)
+			apply_rotate(a, ops);
+	else
+		while (pos++ < size)
+			apply_reverse_rotate(a, ops);
+	apply_push(a, b, ops);
 }
 
-void	complex_sort(t_stack **stack_a, unsigned char flags, double disorder)
+static void	tiny_sort(t_stack **a, t_ops *ops)
+{
+	t_stack	*b;
+	int		to_push;
+
+	b = NULL;
+	to_push = ft_stack_size(*a) - 3;
+	while (to_push-- > 0)
+		push_smallest(a, &b, ops);
+	if (ft_stack_size(*a) == 3)
+		sort_three(a, ops);
+	else if (ft_stack_size(*a) == 2)
+		apply_swap(a, ops);
+	while (b)
+		apply_push_back(&b, a, ops);
+}
+
+void	super_small_sort(t_stack **stack_a, unsigned char flags, double disorder)
 {
 	int		op_count[11];
 	char	*log;
@@ -61,9 +71,9 @@ void	complex_sort(t_stack **stack_a, unsigned char flags, double disorder)
 	ft_bzero(op_count, sizeof(op_count));
 	ops.count = op_count;
 	ops.log = &log;
-	radix_sort(stack_a, &ops);
+	tiny_sort(stack_a, &ops);
 	if (flags & FLAG_BENCHMARK)
-		create_benchmark("complex / O(n log n)", op_count, log, disorder);
+		create_benchmark("super_small / n<=5", op_count, log, disorder);
 	else
 		ft_printf("%s\n", log);
 	free(log);
