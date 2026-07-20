@@ -105,7 +105,7 @@ char	*ft_update_buffer(char *buffer)
 	return (new_buffer);
 }
 
-char	*get_next_line(int fd)
+char	*ft_gnl(int fd)
 {
 	static t_buffer	*buffer_list;
 	t_buffer		*current;
