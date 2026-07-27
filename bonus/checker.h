@@ -15,7 +15,7 @@
 
 # include "push_swap.h"
 
-int		execute_op(t_stack **a, t_stack **b, char *line);
-int		checker_run(t_stack **a, t_stack **b);
+int	execute_op(t_stack **a, t_stack **b, char *line);
+int	checker_run(t_stack **a, t_stack **b);
 
 #endif

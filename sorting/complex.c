@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/23 by hvaini-d                  #+#    #+#             */
-/*   Updated: 2026/06/23 by hvaini-d                 ###   ########.fr       */
+/*   Created: 2026/06/23 12:00:00 by hvaini-d          #+#    #+#             */
+/*   Updated: 2026/06/23 12:00:00 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ void	complex_sort(t_stack **stack_a, unsigned char flags, double disorder)
 	ops.count = op_count;
 	ops.log = &log;
 	radix_sort(stack_a, &ops);
+	ft_printf("%s\n", log);
 	if (flags & FLAG_BENCHMARK)
-		create_benchmark("complex / O(n log n)", op_count, log, disorder);
-	else
-		ft_printf("%s\n", log);
+		create_benchmark(flags, "O(n log n)", op_count, disorder);
 	free(log);
 }

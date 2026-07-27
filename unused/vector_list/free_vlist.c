@@ -12,11 +12,11 @@
 
 #include "vector_list.h"
 
-void    free_vlist(t_vlist *list)
+void	free_vlist(t_vlist *list)
 {
-    if (list)
-    {
-        free(list->array);
-        free(list);
-    }
+	if (list)
+	{
+		free(list->array);
+		free(list);
+	}
 }

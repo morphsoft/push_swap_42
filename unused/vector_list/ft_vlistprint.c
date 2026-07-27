@@ -13,19 +13,19 @@
 #include "vector_list.h"
 #include "libft.h"
 
-void    ft_vlistprint(t_vlist *list)
+void	ft_vlistprint(t_vlist *list)
 {
-    size_t  i;
+	size_t	i;
 
-    if (!list || list->size == 0)
-    {
-        ft_printf("List is empty.\n");
-        return ;
-    }
-    ft_printf("Vector List (size: %u, capacity: %u):\n", list->size, list->capacity);
-    for (i = 0; i < list->size; i++)
-    {
-        ft_printf("%d ", list->array[i]);
-    }
-    ft_printf("\n");
+	if (!list || list->size == 0)
+	{
+		ft_printf("List is empty.\n");
+		return ;
+	}
+	ft_printf("Vector List (size: %u, capacity: %u):\n",
+		list->size, list->capacity);
+	i = 0;
+	while (i < list->size)
+		ft_printf("%d ", list->array[i++]);
+	ft_printf("\n");
 }

@@ -19,12 +19,8 @@ void	ft_swap(t_stack **stack, t_operation_type type);
 void	ft_push(t_stack **stack, int value, t_operation_type type);
 void	ft_rotate(t_stack **stack, t_operation_type type);
 void	ft_reverse_rotate(t_stack **stack, t_operation_type type);
-void	ft_swap_both(t_stack **stack_a, t_stack **stack_b, t_operation_type type);
-void	ft_push_both(t_stack **stack_a, t_stack **stack_b,
-		int value_a, int value_b, t_operation_type type);
-void	ft_rotate_both(t_stack **stack_a, t_stack **stack_b,
-		t_operation_type type);
-void	ft_reverse_rotate_both(t_stack **stack_a, t_stack **stack_b,
-		t_operation_type type);
+void	ft_swap_both(t_stack **a, t_stack **b, t_operation_type type);
+void	ft_rotate_both(t_stack **a, t_stack **b, t_operation_type type);
+void	ft_reverse_rotate_both(t_stack **a, t_stack **b, t_operation_type type);
 
 #endif

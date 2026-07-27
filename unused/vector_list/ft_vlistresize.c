@@ -12,21 +12,21 @@
 
 #include "vector_list.h"
 
-void    ft_vlistresize(t_vlist *list, size_t new_capacity)
+void	ft_vlistresize(t_vlist *list, size_t new_capacity)
 {
-    int	*new_array;
-    size_t	i;
+	int		*new_array;
+	size_t	i;
 
-    new_array = (int *)malloc(sizeof(int) * new_capacity);
-    if (!new_array)
-        return ;
-    i = 0;
-    while (i < list->size)
-    {
-        new_array[i] = list->array[i];
-        i++;
-    }
-    free(list->array);
-    list->array = new_array;
-    list->capacity = new_capacity;
+	new_array = (int *)malloc(sizeof(int) * new_capacity);
+	if (!new_array)
+		return ;
+	i = 0;
+	while (i < list->size)
+	{
+		new_array[i] = list->array[i];
+		i++;
+	}
+	free(list->array);
+	list->array = new_array;
+	list->capacity = new_capacity;
 }

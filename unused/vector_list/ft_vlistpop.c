@@ -12,12 +12,12 @@
 
 #include "vector_list.h"
 
-void    ft_vlistpop(t_vlist *list)
+void	ft_vlistpop(t_vlist *list)
 {
-    if (list && list->size > 0)
-    {
-        list->array[list->size--] = 0; // Optional: Clear the value (not necessary)
-        if (list->size > 0 && list->size <= list->capacity / 4)
-            ft_vlistresize(list, list->capacity / 2);   
-    }
+	if (list && list->size > 0)
+	{
+		list->array[list->size--] = 0;
+		if (list->size > 0 && list->size <= list->capacity / 4)
+			ft_vlistresize(list, list->capacity / 2);
+	}
 }

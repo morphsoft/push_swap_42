@@ -12,18 +12,18 @@
 
 #include "vector_list.h"
 
-void    ft_vlistpush(t_vlist *list, int value)
+void	ft_vlistpush(t_vlist *list, int value)
 {
-    if (list->size >= list->capacity)
-        ft_vlistresize(list, list->capacity * 2);
-    size_t  i;
+	size_t	i;
 
-    i = list->size;
-    while (i > 0)
-    {
-        list->array[i] = list->array[i - 1];
-        i--;
-    }
-    list->array[0] = value;
-    list->size++;
+	if (list->size >= list->capacity)
+		ft_vlistresize(list, list->capacity * 2);
+	i = list->size;
+	while (i > 0)
+	{
+		list->array[i] = list->array[i - 1];
+		i--;
+	}
+	list->array[0] = value;
+	list->size++;
 }

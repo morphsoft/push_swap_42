@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handeling.h                                  :+:      :+:    :+:   */
+/*   error_handling.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_HANDELING_H
-# define ERROR_HANDELING_H
+#ifndef ERROR_HANDLING_H
+# define ERROR_HANDLING_H
 
 # include "libft/libft.h"
 
-enum e_error_codes
+enum	e_error_codes
 {
-    ERROR_NONE = 0,
-    ERROR_INVALID_INPUT = 1,
-    ERROR_MEMORY_ALLOCATION = 2,
-    ERROR_UNKNOWN = 3
+	ERROR_NONE = 0,
+	ERROR_INVALID_INPUT = 1,
+	ERROR_MEMORY_ALLOCATION = 2,
+	ERROR_UNKNOWN = 3
 };
 
-int     trigger_error(int error_code);
+int		trigger_error(int error_code);
 void	ft_printerr(const char *message);
 
 #endif

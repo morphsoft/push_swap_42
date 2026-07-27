@@ -22,11 +22,11 @@ typedef enum e_flag_mask {
 	FLAG_BENCHMARK = 1 << 4,
 }	t_flag_mask;
 
-typedef enum e_algorithm_type {
+typedef enum e_algo_type {
 	ALGO_SIMPLE,
 	ALGO_MEDIUM,
 	ALGO_COMPLEX
-}	t_algorithm_type;
+}	t_algo_type;
 
 typedef struct s_flags
 {
@@ -37,14 +37,15 @@ typedef struct s_flags
 	unsigned char	benchmark;
 }	t_flags;
 
-int		parse_flags_mask(const char *flags_str, unsigned char *flags);
-int		apply_option(unsigned char *flags, const char *s, int *len);
-int		has_simple_flag(unsigned char flags);
-int		has_medium_flag(unsigned char flags);
-int		has_complex_flag(unsigned char flags);
-int		has_adaptive_flag(unsigned char flags);
-int		has_benchmark_flag(unsigned char flags);
-int		build_flags_state(unsigned char flags, t_flags *state);
-t_algorithm_type	resolve_algorithm(const t_flags *state, float disorder);
+int			parse_flags_mask(const char *flags_str, unsigned char *flags);
+int			apply_option(unsigned char *flags, const char *s, int *len);
+int			has_simple_flag(unsigned char flags);
+int			has_medium_flag(unsigned char flags);
+int			has_complex_flag(unsigned char flags);
+int			has_adaptive_flag(unsigned char flags);
+int			has_benchmark_flag(unsigned char flags);
+int			build_flags_state(unsigned char flags, t_flags *state);
+
+t_algo_type	resolve_algorithm(const t_flags *state, float disorder);
 
 #endif

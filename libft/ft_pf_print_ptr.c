@@ -16,8 +16,8 @@ int	pf_print_pointer(void *ptr, t_fmt *fmt)
 {
 	char			digits[65];
 	unsigned long	value;
-	int			len;
-	int			count;
+	int				len;
+	int				count;
 
 	if (!ptr)
 		return (pf_print_string("(nil)", fmt));

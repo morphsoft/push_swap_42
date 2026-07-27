@@ -15,13 +15,13 @@
 
 # include "lexer.h"
 
-int	is_separator(char c);
-int	is_word_end(char c);
-int	match_option(const char *s, const char *name);
-int	skip_token(const char *s);
-int	set_selector(unsigned char *flags, unsigned char selector);
-int	apply_option(unsigned char *flags, const char *s, int *len);
+int		is_separator(char c);
+int		is_word_end(char c);
+int		match_option(const char *s, const char *name);
+int		skip_token(const char *s);
+int		set_selector(unsigned char *flags, unsigned char selector);
+int		apply_option(unsigned char *flags, const char *s, int *len);
 void	apply_default_selector(unsigned char *flags);
-int	parse_options(const char *flags_str, unsigned char *flags);
+int		parse_options(const char *flags_str, unsigned char *flags);
 
 #endif

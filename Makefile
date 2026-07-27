@@ -8,8 +8,8 @@ LIBFT_DIR   := libft
 LIBFT       := $(LIBFT_DIR)/libft.a
 
 INCLUDES    := -I. -I$(LIBFT_DIR) -Iutils -Iutils/stack -Iutils/lexer \
-               -Iutils/sorting_operations -Iutils/vector_list \
-               -Iutils/error_handeling -Ibonus
+               -Iutils/sorting_operations \
+               -Iutils/error_handling -Ibonus
 
 COMMON_SRCS := utils/parser/parsing.c \
                utils/lexer/bitmask_apply.c \
@@ -17,9 +17,8 @@ COMMON_SRCS := utils/parser/parsing.c \
                utils/lexer/bitmask_parse.c \
                utils/lexer/bitmask_resolve.c \
                utils/lexer/bitmask_utils.c \
-               utils/error_handeling/ft_printerr.c \
+               utils/error_handling/ft_printerr.c \
                utils/sorting_operations/push.c \
-               utils/sorting_operations/push_both.c \
                utils/sorting_operations/reverse_rotate.c \
                utils/sorting_operations/reverse_rotate_both.c \
                utils/sorting_operations/rotate.c \
@@ -34,22 +33,18 @@ COMMON_SRCS := utils/parser/parsing.c \
 
 SRCS        := main.c \
                sorting/apply_operations.c \
+               sorting/apply_operations_b.c \
                sorting/complex.c \
                sorting/complex_merge.c \
                sorting/lis.c \
+               sorting/lis_mark.c \
                sorting/medium.c \
                sorting/simple.c \
                sorting/small.c \
                sorting/super_small.c \
-               utils/disorder_calculator.c/disorder.c \
-               utils/vector_list/create_vlist.c \
-               utils/vector_list/free_vlist.c \
-               utils/vector_list/ft_vlistappend.c \
-               utils/vector_list/ft_vlistpop.c \
-               utils/vector_list/ft_vlistprint.c \
-               utils/vector_list/ft_vlistpush.c \
-               utils/vector_list/ft_vlistresize.c \
-               utils/vector_list/vlist_iter.c \
+               sorting/turn.c \
+               sorting/turn_both.c \
+               utils/disorder/disorder.c \
                benchmark/create_benchmark.c \
                $(COMMON_SRCS)
 

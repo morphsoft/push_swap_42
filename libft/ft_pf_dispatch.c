@@ -14,6 +14,8 @@
 
 int	pf_dispatch(t_fmt *fmt, va_list *args)
 {
+	unsigned long long	u;
+
 	if (fmt->conv == 'c')
 		return (pf_print_char((char)va_arg(*args, int), fmt));
 	if (fmt->conv == 's')
@@ -23,8 +25,10 @@ int	pf_dispatch(t_fmt *fmt, va_list *args)
 	if (fmt->conv == 'd' || fmt->conv == 'i')
 		return (pf_print_signed((long)va_arg(*args, int), fmt));
 	if (fmt->conv == 'u' || fmt->conv == 'x' || fmt->conv == 'X')
-		return (pf_print_unsigned((unsigned long long)va_arg(*args, unsigned int),
-				fmt, fmt->conv));
+	{
+		u = (unsigned long long)va_arg(*args, unsigned int);
+		return (pf_print_unsigned(u, fmt, fmt->conv));
+	}
 	if (fmt->conv == '%')
 		return (pf_print_char('%', fmt));
 	if (fmt->conv)

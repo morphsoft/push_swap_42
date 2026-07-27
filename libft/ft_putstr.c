@@ -14,12 +14,12 @@
 
 int	ft_putstr(char *str)
 {
-    int	count;
+	int	count;
 
-    count = 0;
-    if (!str)
-        return (ft_putstr("(null)"));
-    while (*str)
-        count += ft_putchar(*str++);
-    return (count);
+	count = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
+	while (*str)
+		count += ft_putchar(*str++);
+	return (count);
 }

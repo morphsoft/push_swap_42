@@ -12,14 +12,13 @@
 
 #include "vector_list.h"
 
-void    vlist_iter(t_vlist *list, void (*func)(int *))
+void	vlist_iter(t_vlist *list, void (*func)(int *))
 {
-    size_t  i;
+	size_t	i;
 
-    if (!list || !func)
-        return ;
-    for (i = 0; i < list->size; i++)
-    {
-        func(&list->array[i]);
-    }
+	if (!list || !func)
+		return ;
+	i = 0;
+	while (i < list->size)
+		func(&list->array[i++]);
 }

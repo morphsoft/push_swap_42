@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   lis_mark.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,47 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_utils.h"
 
-/* inversions between `a` and every node after it, up to `size` */
-static int	count_after(t_stack *a, int start, int size)
+/* index where the longest increasing subsequence ends */
+static int	best_end(int *dp, int size)
 {
-	t_stack	*b;
-	int		mistakes;
-	int		i;
+	int	max_len;
+	int	idx;
+	int	i;
 
-	b = a->next;
-	mistakes = 0;
-	i = start + 1;
+	max_len = 0;
+	idx = 0;
+	i = 0;
 	while (i < size)
 	{
-		if (a->value > b->value)
-			mistakes++;
-		b = b->next;
+		if (dp[i] > max_len)
+		{
+			max_len = dp[i];
+			idx = i;
+		}
 		i++;
 	}
-	return (mistakes);
+	return (idx);
 }
 
-/* share of out-of-order pairs: 0.0 sorted, ~0.5 random, 1.0 reversed */
-float	compute_disorder(t_stack *stack_a)
+/* flag every rank belonging to the LIS, walking the parent chain back */
+int	*mark_lis(int *dp, int *parent, int *ranks, int size)
 {
-	t_stack	*a;
-	int		size;
-	int		mistakes;
-	int		i;
+	int	*in_lis;
+	int	idx;
 
-	size = ft_stack_size(stack_a);
-	if (size < 2)
-		return (0.0f);
-	mistakes = 0;
-	a = stack_a;
-	i = 0;
-	while (i < size - 1)
+	in_lis = ft_calloc(size, sizeof(int));
+	if (!in_lis)
+		return (NULL);
+	idx = best_end(dp, size);
+	while (idx != -1)
 	{
-		mistakes += count_after(a, i, size);
-		a = a->next;
-		i++;
+		in_lis[ranks[idx]] = 1;
+		idx = parent[idx];
 	}
-	return ((float)mistakes / (size * (size - 1) / 2));
+	return (in_lis);
 }

@@ -39,7 +39,7 @@ typedef struct s_stack
 	unsigned int	rank;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-}   t_stack;
+}	t_stack;
 
 t_stack	*create_stack(int value);
 void	normalize_stack(t_stack *stack);

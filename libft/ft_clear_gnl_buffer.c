@@ -14,16 +14,16 @@
 
 void	ft_clear_gnl_buffer(t_buffer **buffer_list)
 {
-    t_buffer	*current;
-    t_buffer	*temp;
+	t_buffer	*current;
+	t_buffer	*temp;
 
-    current = *buffer_list;
-    while (current)
-    {
-        temp = current->next;
-        free(current->content);
-        free(current);
-        current = temp;
-    }
-    *buffer_list = NULL;
+	current = *buffer_list;
+	while (current)
+	{
+		temp = current->next;
+		free(current->content);
+		free(current);
+		current = temp;
+	}
+	*buffer_list = NULL;
 }

@@ -24,7 +24,7 @@ int	build_flags_state(unsigned char flags, t_flags *state)
 	return (1);
 }
 
-t_algorithm_type	resolve_algorithm(const t_flags *state, float disorder)
+t_algo_type	resolve_algorithm(const t_flags *state, float disorder)
 {
 	if (!state)
 		return (ALGO_COMPLEX);

@@ -13,19 +13,19 @@
 #include "stack.h"
 #include <stdlib.h>
 
-void    free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
-    t_stack	*current;
-    t_stack	*next;
+	t_stack	*current;
+	t_stack	*next;
 
-    if (!stack)
-        return ;
-    current = stack->next;
-    while (current != stack)
-    {
-        next = current->next;
-        free(current);
-        current = next;
-    }
-    free(stack);
+	if (!stack)
+		return ;
+	current = stack->next;
+	while (current != stack)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	free(stack);
 }

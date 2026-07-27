@@ -24,18 +24,61 @@ static int	sum_ops(int *op_count)
 	return (total);
 }
 
-void	create_benchmark(char *name, int *op_count, char *ops, double dis)
+/* the selector the user asked for; adaptive is the default */
+static char	*strategy_name(unsigned char flags)
 {
-	(void)ops;
-	ft_printf("[bench] disorder:   %i%%\n", (int)(dis * 100));
-	ft_printf("[bench] strategy:   %s\n", name);
-	ft_printf("[bench] total_ops:  %i\n", sum_ops(op_count));
-	ft_printf("[bench] sa: %i  sb: %i  ss: %i  pa: %i  pb: %i\n",
-		op_count[SWAP_A], op_count[SWAP_B],
-		op_count[SWAP_BOTH], op_count[PUSH_A],
-		op_count[PUSH_B]);
-	ft_printf("[bench] ra: %i  rb: %i  rr: %i  rra: %i  rrb: %i  rrr: %i\n",
-		op_count[ROTATE_A], op_count[ROTATE_B],
-		op_count[ROTATE_BOTH], op_count[REVERSE_ROTATE_A],
-		op_count[REVERSE_ROTATE_B], op_count[REVERSE_ROTATE_BOTH]);
+	if (flags & FLAG_SIMPLE)
+		return ("Simple");
+	if (flags & FLAG_MEDIUM)
+		return ("Medium");
+	if (flags & FLAG_COMPLEX)
+		return ("Complex");
+	return ("Adaptive");
+}
+
+/* disorder as a percentage with exactly two decimals, e.g. "49.93%" */
+static void	put_disorder(double dis)
+{
+	int	hundredths;
+
+	hundredths = (int)(dis * 10000.0 + 0.5);
+	ft_putstr_fd("[bench] disorder:   ", 2);
+	ft_putnbr_fd(hundredths / 100, 2);
+	ft_putchar_fd('.', 2);
+	if (hundredths % 100 < 10)
+		ft_putchar_fd('0', 2);
+	ft_putnbr_fd(hundredths % 100, 2);
+	ft_putendl_fd("%", 2);
+}
+
+static void	put_counts(int *op_count)
+{
+	const char	*names[11] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
+		"rra", "rrb", "rrr"};
+	int			i;
+
+	ft_putstr_fd("[bench] ", 2);
+	i = 0;
+	while (i < 11)
+	{
+		ft_putstr_fd((char *)names[i], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(op_count[i], 2);
+		if (++i < 11)
+			ft_putstr_fd("  ", 2);
+	}
+	ft_putchar_fd('\n', 2);
+}
+
+void	create_benchmark(unsigned char flags, char *class, int *op, double dis)
+{
+	put_disorder(dis);
+	ft_putstr_fd("[bench] strategy:   ", 2);
+	ft_putstr_fd(strategy_name(flags), 2);
+	ft_putstr_fd(" / ", 2);
+	ft_putendl_fd(class, 2);
+	ft_putstr_fd("[bench] total_ops:  ", 2);
+	ft_putnbr_fd(sum_ops(op), 2);
+	ft_putchar_fd('\n', 2);
+	put_counts(op);
 }

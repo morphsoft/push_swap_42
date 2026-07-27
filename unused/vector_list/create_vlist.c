@@ -14,18 +14,18 @@
 
 t_vlist	*create_vlist(size_t initial_capacity)
 {
-    t_vlist	*list;
+	t_vlist	*list;
 
-    list = (t_vlist *)malloc(sizeof(t_vlist));
-    if (!list)
-        return (NULL);
-    list->array = (int *)malloc(sizeof(int) * initial_capacity);
-    if (!list->array)
-    {
-        free(list);
-        return (NULL);
-    }
-    list->size = 0;
-    list->capacity = initial_capacity;
-    return (list);
+	list = (t_vlist *)malloc(sizeof(t_vlist));
+	if (!list)
+		return (NULL);
+	list->array = (int *)malloc(sizeof(int) * initial_capacity);
+	if (!list->array)
+	{
+		free(list);
+		return (NULL);
+	}
+	list->size = 0;
+	list->capacity = initial_capacity;
+	return (list);
 }

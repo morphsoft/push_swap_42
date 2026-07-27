@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/23 by hvaini-d                  #+#    #+#             */
-/*   Updated: 2026/06/23 by hvaini-d                 ###   ########.fr       */
+/*   Created: 2026/06/23 12:00:00 by hvaini-d          #+#    #+#             */
+/*   Updated: 2026/06/23 12:00:00 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,36 +56,6 @@ static int	*compute_dp(int *ranks, int *parent, int size)
 	return (dp);
 }
 
-static int	*mark_lis(int *dp, int *parent, int *ranks, int size)
-{
-	int	*in_lis;
-	int	max_len;
-	int	idx;
-	int	i;
-
-	in_lis = ft_calloc(size, sizeof(int));
-	if (!in_lis)
-		return (NULL);
-	max_len = 0;
-	idx = 0;
-	i = 0;
-	while (i < size)
-	{
-		if (dp[i] > max_len)
-		{
-			max_len = dp[i];
-			idx = i;
-		}
-		i++;
-	}
-	while (idx != -1)
-	{
-		in_lis[ranks[idx]] = 1;
-		idx = parent[idx];
-	}
-	return (in_lis);
-}
-
 static int	*build_in_lis(t_stack *stack_a, int size)
 {
 	int	*ranks;
@@ -110,6 +80,7 @@ void	lis_sort(t_stack **stack_a, t_ops *ops)
 {
 	t_stack	*stack_b;
 	int		*in_lis;
+	int		size;
 
 	stack_b = NULL;
 	in_lis = build_in_lis(*stack_a, ft_stack_size(*stack_a));
@@ -117,6 +88,6 @@ void	lis_sort(t_stack **stack_a, t_ops *ops)
 	free(in_lis);
 	while (stack_b)
 		insert_element(stack_a, &stack_b, find_best(stack_a, &stack_b), ops);
-	while ((*stack_a)->rank != 0)
-		apply_rotate(stack_a, ops);
+	size = ft_stack_size(*stack_a);
+	turn_to_top(stack_a, min_pos(*stack_a, size), size, ops);
 }

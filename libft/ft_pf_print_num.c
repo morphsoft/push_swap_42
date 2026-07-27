@@ -59,8 +59,8 @@ static int	pf_write_num(char *digits, t_nfmt *n, t_fmt *fmt, char conv)
 
 int	pf_print_signed(long value, t_fmt *fmt)
 {
-	char			digits[32];
-	t_nfmt		n;
+	char				digits[32];
+	t_nfmt				n;
 	unsigned long long	abs_v;
 
 	if (value < 0)
@@ -82,9 +82,9 @@ int	pf_print_signed(long value, t_fmt *fmt)
 
 int	pf_print_unsigned(unsigned long long value, t_fmt *fmt, char conv)
 {
-	char		*base;
-	char		digits[65];
-	t_nfmt		n;
+	char	*base;
+	char	digits[65];
+	t_nfmt	n;
 
 	if (conv == 'u')
 		base = "0123456789";

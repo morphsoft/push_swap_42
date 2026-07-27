@@ -12,8 +12,8 @@
 
 #include "sorting_operations.h"
 
-void ft_rotate_both(t_stack **stack_a, t_stack **stack_b, t_operation_type type)
+void	ft_rotate_both(t_stack **a, t_stack **b, t_operation_type type)
 {
-    ft_rotate(stack_a, type);
-    ft_rotate(stack_b, type);
+	ft_rotate(a, type);
+	ft_rotate(b, type);
 }

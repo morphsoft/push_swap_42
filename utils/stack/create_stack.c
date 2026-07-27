@@ -27,8 +27,6 @@ t_stack	*create_stack(int value)
 	return (new_node);
 }
 
-
-
 int	ft_pop(t_stack **stack, int *value)
 {
 	t_stack	*node;

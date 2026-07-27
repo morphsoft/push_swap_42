@@ -17,10 +17,10 @@
 
 typedef struct vector_list
 {
-	int				*array;
-	size_t			size;
-	size_t			capacity;
-}   t_vlist;
+	int		*array;
+	size_t	size;
+	size_t	capacity;
+}	t_vlist;
 
 t_vlist	*create_vlist(size_t initial_capacity);
 void	free_vlist(t_vlist *list);

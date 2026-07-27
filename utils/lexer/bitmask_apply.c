@@ -30,9 +30,9 @@ int	apply_option(unsigned char *flags, const char *s, int *len)
 		return (*len = 9, set_selector(flags, FLAG_COMPLEX));
 	if (match_option(s, "--adaptive"))
 		return (*len = 10, set_selector(flags, FLAG_ADAPTIVE));
-	if (!match_option(s, "--benchmark"))
+	if (!match_option(s, "--bench"))
 		return (0);
-	*len = 11;
+	*len = 7;
 	*flags |= FLAG_BENCHMARK;
 	return (1);
 }

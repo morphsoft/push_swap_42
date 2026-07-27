@@ -12,10 +12,10 @@
 
 #include "vector_list.h"
 
-void    ft_vlistappend(t_vlist *list, int value)
+void	ft_vlistappend(t_vlist *list, int value)
 {
-    if (list->size >= list->capacity)
-        ft_vlistresize(list, list->capacity * 2);
-    list->array[list->size] = value;
-    list->size++;
+	if (list->size >= list->capacity)
+		ft_vlistresize(list, list->capacity * 2);
+	list->array[list->size] = value;
+	list->size++;
 }

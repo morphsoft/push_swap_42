@@ -12,8 +12,8 @@
 
 #include "sorting_operations.h"
 
-void ft_swap_both(t_stack **stack_a, t_stack **stack_b, t_operation_type type)
+void	ft_swap_both(t_stack **a, t_stack **b, t_operation_type type)
 {
-    ft_swap(stack_a, type);
-    ft_swap(stack_b, type);
+	ft_swap(a, type);
+	ft_swap(b, type);
 }

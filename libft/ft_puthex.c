@@ -14,16 +14,16 @@
 
 int	ft_puthex(unsigned long number, char format)
 {
-    char	*base;
-    int		count;
+	char	*base;
+	int		count;
 
-    count = 0;
-    if (format == 'x')
-        base = "0123456789abcdef";
-    else
-        base = "0123456789ABCDEF";
-    if (number >= 16)
-        count += ft_puthex(number / 16, format);
-    count += ft_putchar(base[number % 16]);
-    return (count);
+	count = 0;
+	if (format == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	if (number >= 16)
+		count += ft_puthex(number / 16, format);
+	count += ft_putchar(base[number % 16]);
+	return (count);
 }

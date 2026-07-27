@@ -12,8 +12,8 @@
 
 #include "sorting_operations.h"
 
-void ft_push_both(t_stack **stack_a, t_stack **stack_b, int value_a, int value_b, t_operation_type type)
+void	ft_push_both(t_stack **a, t_stack **b, int *values, t_operation_type t)
 {
-    ft_push(stack_a, value_a, type);
-    ft_push(stack_b, value_b, type);
+	ft_push(a, values[0], t);
+	ft_push(b, values[1], t);
 }

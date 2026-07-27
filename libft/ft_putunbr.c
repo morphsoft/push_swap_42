@@ -14,11 +14,11 @@
 
 int	ft_putunbr(unsigned int number)
 {
-    int	count;
+	int	count;
 
-    count = 0;
-    if (number >= 10)
-        count += ft_putunbr(number / 10);
-    count += ft_putchar((number % 10) + '0');
-    return (count);
+	count = 0;
+	if (number >= 10)
+		count += ft_putunbr(number / 10);
+	count += ft_putchar((number % 10) + '0');
+	return (count);
 }

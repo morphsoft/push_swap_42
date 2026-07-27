@@ -23,42 +23,18 @@ void	simple_sort(t_stack **stack_a, unsigned char flags, double disorder)
 	ops.count = op_count;
 	ops.log = &log;
 	selection_sort(stack_a, &ops);
+	ft_printf("%s\n", log);
 	if (flags & FLAG_BENCHMARK)
-		create_benchmark("simple / 0(n2)", op_count, log, disorder);
-	else
-		ft_printf("%s\n", log);
+		create_benchmark(flags, "O(n^2)", op_count, disorder);
 	free(log);
 }
 
 static void	rotate_min_to_top(t_stack **stack_a, t_ops *ops)
 {
-	t_stack	*index;
-	t_stack	*min_node;
-	int		size;
-	int		min_pos;
-	int		i;
+	int	size;
 
-	index = *stack_a;
-	min_node = *stack_a;
 	size = ft_stack_size(*stack_a);
-	i = 0;
-	min_pos = 0;
-	while (i < size)
-	{
-		if (index->rank < min_node->rank)
-		{
-			min_node = index;
-			min_pos = i;
-		}
-		index = index->next;
-		i++;
-	}
-	if (min_pos <= size / 2)
-		while (min_pos-- > 0)
-			apply_rotate(stack_a, ops);
-	else
-		while (min_pos++ < size)
-			apply_reverse_rotate(stack_a, ops);
+	turn_to_top(stack_a, min_pos(*stack_a, size), size, ops);
 }
 
 void	selection_sort(t_stack **stack_a, t_ops *ops)

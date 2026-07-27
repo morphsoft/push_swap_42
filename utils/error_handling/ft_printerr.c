@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printerr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaopedr <joaopedr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 02:55:55 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/16 02:58:53 by joaopedr         ###   ########.fr       */
+/*   Updated: 2026/07/27 20:13:02 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error_handeling.h"
+#include "error_handling.h"
 
 int	trigger_error(int error_code)
 {
