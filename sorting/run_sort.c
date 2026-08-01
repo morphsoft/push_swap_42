@@ -6,7 +6,7 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/01 00:00:00 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/08/01 15:06:28 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:48:30 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	run_sort(t_stack **stack_a, t_sort_run *run)
 	ops.count = op_count;
 	ops.log = &log;
 	run->algo(stack_a, &ops);
-	ft_printf("%s", log);
 	if (run->flags & FLAG_BENCHMARK)
 		create_benchmark(run->flags, run->label, op_count, run->disorder);
+	else
+		ft_printf("%s", log);
 	free(log);
 }
