@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	parse_flags(char *arg, unsigned char *flags)
+static int	parse_flags(char *arg, unsigned char *flags)
 {
 	int	len;
 

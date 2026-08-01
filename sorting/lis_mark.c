@@ -6,14 +6,13 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:52:49 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/06/23 15:55:51 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:04:56 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_utils.h"
 
-/* index where the longest increasing subsequence ends */
-static int	best_end(int *dp, int size)
+static int	best_end(int *chain_len, int size)
 {
 	int	max_len;
 	int	idx;
@@ -24,9 +23,9 @@ static int	best_end(int *dp, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (dp[i] > max_len)
+		if (chain_len[i] > max_len)
 		{
-			max_len = dp[i];
+			max_len = chain_len[i];
 			idx = i;
 		}
 		i++;
@@ -34,8 +33,7 @@ static int	best_end(int *dp, int size)
 	return (idx);
 }
 
-/* flag every rank belonging to the LIS, walking the parent chain back */
-int	*mark_lis(int *dp, int *parent, int *ranks, int size)
+int	*mark_lis(int *chain_len, int *prev_pos, int *ranks, int size)
 {
 	int	*in_lis;
 	int	idx;
@@ -43,11 +41,11 @@ int	*mark_lis(int *dp, int *parent, int *ranks, int size)
 	in_lis = ft_calloc(size, sizeof(int));
 	if (!in_lis)
 		return (NULL);
-	idx = best_end(dp, size);
+	idx = best_end(chain_len, size);
 	while (idx != -1)
 	{
 		in_lis[ranks[idx]] = 1;
-		idx = parent[idx];
+		idx = prev_pos[idx];
 	}
 	return (in_lis);
 }

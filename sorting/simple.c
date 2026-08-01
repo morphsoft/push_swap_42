@@ -14,19 +14,13 @@
 
 void	simple_sort(t_stack **stack_a, unsigned char flags, double disorder)
 {
-	int		op_count[11];
-	char	*log;
-	t_ops	ops;
+	t_sort_run	run;
 
-	log = ft_strdup("");
-	ft_bzero(op_count, sizeof(op_count));
-	ops.count = op_count;
-	ops.log = &log;
-	selection_sort(stack_a, &ops);
-	ft_printf("%s\n", log);
-	if (flags & FLAG_BENCHMARK)
-		create_benchmark(flags, "O(n^2)", op_count, disorder);
-	free(log);
+	run.algo = selection_sort;
+	run.label = "O(n^2)";
+	run.flags = flags;
+	run.disorder = disorder;
+	run_sort(stack_a, &run);
 }
 
 static void	rotate_min_to_top(t_stack **stack_a, t_ops *ops)

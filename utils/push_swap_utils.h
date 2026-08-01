@@ -6,7 +6,7 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 01:47:57 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/07/27 20:13:02 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:06:21 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ typedef struct s_ops
 	char	**log;
 }	t_ops;
 
+typedef struct s_sort_run
+{
+	void			(*algo)(t_stack **stack, t_ops *ops);
+	char			*label;
+	unsigned char	flags;
+	double			disorder;
+}	t_sort_run;
+
+void	run_sort(t_stack **stack_a, t_sort_run *run);
+
 void	apply_swap(t_stack **stack, t_ops *ops);
 void	apply_rotate(t_stack **stk, t_ops *ops);
 void	apply_reverse_rotate(t_stack **stk, t_ops *ops);
@@ -51,9 +61,9 @@ void	turn_both(t_stack **a, t_stack **b, t_move *m, t_ops *ops);
 
 void	sort_three(t_stack **stack_a, t_ops *ops);
 void	selection_sort(t_stack **stack_a, t_ops *ops);
-void	lis_sort(t_stack **stack_a, t_ops *ops);
-int		*mark_lis(int *dp, int *parent, int *ranks, int size);
 
+void	lis_sort(t_stack **stack_a, t_ops *ops);
+int		*mark_lis(int *chain_len, int *prev_pos, int *ranks, int size);
 void	push_non_lis(t_stack **a, t_stack **b, int *in_lis, t_ops *ops);
 int		find_best(t_stack **a, t_stack **b);
 void	insert_element(t_stack **a, t_stack **b, int best, t_ops *ops);

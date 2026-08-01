@@ -35,12 +35,13 @@ SRCS        := main.c \
                sorting/apply_operations.c \
                sorting/apply_operations_b.c \
                sorting/complex.c \
-               sorting/complex_merge.c \
                sorting/lis.c \
                sorting/lis_mark.c \
+               sorting/lis_merge.c \
                sorting/medium.c \
+               sorting/run_sort.c \
                sorting/simple.c \
-               sorting/small.c \
+               sorting/sort_three.c \
                sorting/super_small.c \
                sorting/turn.c \
                sorting/turn_both.c \

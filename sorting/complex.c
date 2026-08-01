@@ -53,17 +53,11 @@ static void	radix_sort(t_stack **stack_a, t_ops *ops)
 
 void	complex_sort(t_stack **stack_a, unsigned char flags, double disorder)
 {
-	int		op_count[11];
-	char	*log;
-	t_ops	ops;
+	t_sort_run	run;
 
-	log = ft_strdup("");
-	ft_bzero(op_count, sizeof(op_count));
-	ops.count = op_count;
-	ops.log = &log;
-	radix_sort(stack_a, &ops);
-	ft_printf("%s\n", log);
-	if (flags & FLAG_BENCHMARK)
-		create_benchmark(flags, "O(n log n)", op_count, disorder);
-	free(log);
+	run.algo = radix_sort;
+	run.label = "O(n log n)";
+	run.flags = flags;
+	run.disorder = disorder;
+	run_sort(stack_a, &run);
 }

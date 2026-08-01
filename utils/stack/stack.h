@@ -6,7 +6,7 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 02:58:00 by joaopedr          #+#    #+#             */
-/*   Updated: 2026/06/23 15:59:35 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:07:31 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef enum e_operation_types {
 	ROTATE_BOTH,
 	REVERSE_ROTATE_A,
 	REVERSE_ROTATE_B,
-	REVERSE_ROTATE_BOTH
+	REVERSE_ROTATE_BOTH,
+	OP_TYPE_COUNT
 }	t_operation_type;
 
 typedef struct s_stack

@@ -6,13 +6,12 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:52:49 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/06/23 15:55:51 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:07:05 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* inversions between `a` and every node after it, up to `size` */
 static int	count_after(t_stack *a, int start, int size)
 {
 	t_stack	*b;
@@ -32,7 +31,6 @@ static int	count_after(t_stack *a, int start, int size)
 	return (mistakes);
 }
 
-/* share of out-of-order pairs: 0.0 sorted, ~0.5 random, 1.0 reversed */
 float	compute_disorder(t_stack *stack_a)
 {
 	t_stack	*a;

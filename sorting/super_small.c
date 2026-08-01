@@ -41,17 +41,11 @@ static void	tiny_sort(t_stack **a, t_ops *ops)
 void	super_small_sort(t_stack **stack_a, unsigned char flags,
 		double disorder)
 {
-	int		op_count[11];
-	char	*log;
-	t_ops	ops;
+	t_sort_run	run;
 
-	log = ft_strdup("");
-	ft_bzero(op_count, sizeof(op_count));
-	ops.count = op_count;
-	ops.log = &log;
-	tiny_sort(stack_a, &ops);
-	ft_printf("%s\n", log);
-	if (flags & FLAG_BENCHMARK)
-		create_benchmark(flags, "O(n^2)", op_count, disorder);
-	free(log);
+	run.algo = tiny_sort;
+	run.label = "O(n^2)";
+	run.flags = flags;
+	run.disorder = disorder;
+	run_sort(stack_a, &run);
 }
