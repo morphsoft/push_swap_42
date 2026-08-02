@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include <stdlib.h>
+#include "libft.h"
 
 void	free_stack(t_stack *stack)
 {
