@@ -85,7 +85,7 @@ utils/lexer/                parsing das flags (bitmask) e resolução da estrat�
 utils/stack/                pilha circular duplamente ligada, normalização por rank
 utils/sorting_operations/   as 11 operações primitivas
 utils/disorder/             cálculo da métrica de desordem
-utils/error_handeling/
+utils/error_handling/
 sorting/                    as quatro estratégias e seus utilitários
 benchmark/                  saída do modo --bench
 bonus/                      checker
@@ -137,7 +137,7 @@ Para `n ≤ 5` o dispatch usa `super_small_sort` (`sorting/super_small.c`), que
 empurra os menores até restarem três e resolve o caso de três por comparação
 direta. É um caso limitado por constante e não altera a classe assintótica.
 
-### 2. Medium — O(n√n) — `sorting/lis.c`, `sorting/complex_merge.c`
+### 2. Medium — O(n√n) — `sorting/lis.c`, `sorting/lis_mark.c`, `sorting/lis_merge.c`
 
 Esta é a estratégia mais elaborada do projeto, em duas fases:
 
@@ -226,7 +226,7 @@ A seção seguinte discute onde esse racional se descola da realidade medida.
 | --- | --- |
 | Pilhas `a` e `b` | O(n) nós (lista circular duplamente ligada) |
 | Simple | O(1) adicional |
-| Medium | O(n) — vetores `ranks`, `dp`, `parent`, `in_lis` |
+| Medium | O(n) — vetores `ranks`, `chain_len`, `prev_pos`, `in_lis` |
 | Complex | O(n) — pilha `b` |
 | Log de operações | O(número de operações) |
 
@@ -402,3 +402,4 @@ principal — apenas o dispatch de operações e o laço de leitura são novos.
 
 ### Uso de IA
 
+- IA foi usada para escrever esse readme parcialmente e para ajudar com identificacao de bugs, limpeza de codigo e referencia de pesquisa

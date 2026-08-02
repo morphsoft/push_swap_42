@@ -6,13 +6,12 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:52:49 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/06/23 15:55:51 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:06:51 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_utils.h"
 
-/* cheapest way to bring `pos` to the top: +1 = rotate, -1 = reverse rotate */
 static void	split_move(int pos, int size, int *dir, int *count)
 {
 	if (pos <= size / 2)
@@ -27,10 +26,6 @@ static void	split_move(int pos, int size, int *dir, int *count)
 	}
 }
 
-/*
-** What turn_both will actually spend: shared steps cost one rr/rrr each, so
-** matching directions cost max(a, b) rather than a + b.
-*/
 int	move_cost(t_move *m)
 {
 	int	dir_a;
@@ -69,10 +64,6 @@ static void	finish_b(t_stack **b, int dir, int count, t_ops *ops)
 	}
 }
 
-/*
-** Bring m->pos_a and m->pos_b to the top of their stacks, spending a single
-** rr/rrr for every step both stacks share instead of two separate rotations.
-*/
 void	turn_both(t_stack **a, t_stack **b, t_move *m, t_ops *ops)
 {
 	int	dir_a;

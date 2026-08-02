@@ -6,7 +6,7 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:52:49 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/06/23 15:55:51 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:06:58 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	turn_to_top(t_stack **stk, int pos, int size, t_ops *ops)
 			apply_reverse_rotate(stk, ops);
 }
 
-/* position of the lowest-ranked node, counted from the top of the stack */
 int	min_pos(t_stack *stk, int size)
 {
 	t_stack			*node;
@@ -47,7 +46,6 @@ int	min_pos(t_stack *stk, int size)
 	return (pos);
 }
 
-/* position of the node holding `rank`, counted from the top of the stack */
 int	rank_pos(t_stack *stk, unsigned int rank, int size)
 {
 	t_stack	*node;

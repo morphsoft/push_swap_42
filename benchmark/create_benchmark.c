@@ -6,7 +6,7 @@
 /*   By: hvaini-d <hvaini-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 19:20:26 by hvaini-d          #+#    #+#             */
-/*   Updated: 2026/06/19 19:33:01 by hvaini-d         ###   ########.fr       */
+/*   Updated: 2026/08/01 15:04:22 by hvaini-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ static int	sum_ops(int *op_count)
 
 	total = 0;
 	i = 0;
-	while (i < 11)
+	while (i < OP_TYPE_COUNT)
 		total += op_count[i++];
 	return (total);
 }
 
-/* the selector the user asked for; adaptive is the default */
 static char	*strategy_name(unsigned char flags)
 {
 	if (flags & FLAG_SIMPLE)
@@ -36,7 +35,6 @@ static char	*strategy_name(unsigned char flags)
 	return ("Adaptive");
 }
 
-/* disorder as a percentage with exactly two decimals, e.g. "49.93%" */
 static void	put_disorder(double dis)
 {
 	int	hundredths;
@@ -53,18 +51,18 @@ static void	put_disorder(double dis)
 
 static void	put_counts(int *op_count)
 {
-	const char	*names[11] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
-		"rra", "rrb", "rrr"};
+	const char	*names[OP_TYPE_COUNT] = {"sa", "sb", "ss", "pa", "pb", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"};
 	int			i;
 
 	ft_putstr_fd("[bench] ", 2);
 	i = 0;
-	while (i < 11)
+	while (i < OP_TYPE_COUNT)
 	{
 		ft_putstr_fd((char *)names[i], 2);
 		ft_putstr_fd(": ", 2);
 		ft_putnbr_fd(op_count[i], 2);
-		if (++i < 11)
+		if (++i < OP_TYPE_COUNT)
 			ft_putstr_fd("  ", 2);
 	}
 	ft_putchar_fd('\n', 2);
