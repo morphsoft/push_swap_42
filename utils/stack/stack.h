@@ -13,13 +13,15 @@
 #ifndef STACK_H
 # define STACK_H
 
-typedef enum e_limits {
+typedef enum e_limits
+{
 	UINT_MAX = 4294967295,
 	INT_MAX = 2147483647,
 	INT_MIN = -2147483648,
 }	t_limits;
 
-typedef enum e_operation_types {
+typedef enum e_operation_types
+{
 	SWAP_A,
 	SWAP_B,
 	SWAP_BOTH,

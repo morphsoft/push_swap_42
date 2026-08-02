@@ -13,7 +13,8 @@
 #ifndef LEXER_H
 # define LEXER_H
 
-typedef enum e_flag_mask {
+typedef enum e_flag_mask
+{
 	FLAG_NONE = 0,
 	FLAG_SIMPLE = 1 << 0,
 	FLAG_MEDIUM = 1 << 1,
@@ -22,7 +23,8 @@ typedef enum e_flag_mask {
 	FLAG_BENCHMARK = 1 << 4,
 }	t_flag_mask;
 
-typedef enum e_algo_type {
+typedef enum e_algo_type
+{
 	ALGO_SIMPLE,
 	ALGO_MEDIUM,
 	ALGO_COMPLEX
