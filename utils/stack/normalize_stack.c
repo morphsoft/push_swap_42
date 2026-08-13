@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include <stddef.h>
+#include "libft.h"
 
 static t_stack	*max_unranked(t_stack *stack, int size)
 {
