@@ -13,6 +13,8 @@
 #ifndef LEXER_H
 # define LEXER_H
 
+# define SIMPLE_SIZE_MAX 100
+
 typedef enum e_flag_mask {
 	FLAG_NONE = 0,
 	FLAG_SIMPLE = 1 << 0,
@@ -46,6 +48,6 @@ int			has_adaptive_flag(unsigned char flags);
 int			has_benchmark_flag(unsigned char flags);
 int			build_flags_state(unsigned char flags, t_flags *state);
 
-t_algo_type	resolve_algorithm(const t_flags *state, float disorder);
+t_algo_type	resolve_algorithm(const t_flags *state, float disorder, int size);
 
 #endif

@@ -190,14 +190,23 @@ n·log₂n**, estável de n = 100 a n = 1000.
 
 ### 4. Adaptive — padrão — `utils/lexer/bitmask_resolve.c`
 
-Seleciona a estratégia pela desordem medida, exatamente nos limiares que o
-subject determina:
+Seleciona a estratégia pela desordem medida e pelo tamanho da pilha, nos
+limiares que o subject determina:
 
-| desordem | estratégia | classe exigida |
-| --- | --- | --- |
-| `< 0.2` | Simple | O(n²) |
-| `0.2 ≤ d < 0.5` | Medium | O(n√n) |
-| `≥ 0.5` | Complex | O(n log n) |
+| desordem | tamanho | estratégia | classe exigida |
+| --- | --- | --- | --- |
+| qualquer | `≤ 5` | Super small (ótimo) | — |
+| `< 0.2` | `≤ 100` | Simple | O(n²) |
+| `< 0.2` | `> 100` | Medium | O(n√n) |
+| `0.2 ≤ d < 0.5` | qualquer | Medium | O(n√n) |
+| `≥ 0.5` | qualquer | Complex | O(n log n) |
+
+O guarda de tamanho existe porque o custo do selection sort é a soma das
+distâncias de rotação até cada mínimo — mesmo com desordem baixa isso passa
+de 16k operações em n = 500. Acima de `SIMPLE_SIZE_MAX` (100, definido em
+`utils/lexer/lexer.h`) até a flag `--simple` delega para o Medium (LIS), que
+é exatamente o algoritmo certo para entradas quase ordenadas. Pilhas com até
+5 elementos sempre usam o sort ótimo, independente do modo forçado.
 
 **Racional dos limiares.** Eles não foram escolhidos por nós — são impostos
 pelo subject (VI.3.3). Mas fazem sentido do ponto de vista do custo: com

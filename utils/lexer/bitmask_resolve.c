@@ -24,17 +24,17 @@ int	build_flags_state(unsigned char flags, t_flags *state)
 	return (1);
 }
 
-t_algo_type	resolve_algorithm(const t_flags *state, float disorder)
+t_algo_type	resolve_algorithm(const t_flags *state, float disorder, int size)
 {
 	if (!state)
 		return (ALGO_COMPLEX);
-	if (state->simple)
+	if (state->simple && size <= SIMPLE_SIZE_MAX)
 		return (ALGO_SIMPLE);
-	if (state->medium)
+	if (state->simple || state->medium)
 		return (ALGO_MEDIUM);
 	if (state->complex)
 		return (ALGO_COMPLEX);
-	if (disorder < 0.2f)
+	if (disorder < 0.2f && size <= SIMPLE_SIZE_MAX)
 		return (ALGO_SIMPLE);
 	if (disorder < 0.5f)
 		return (ALGO_MEDIUM);

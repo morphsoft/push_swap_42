@@ -27,10 +27,20 @@ typedef struct s_move
 	int	size_b;
 }	t_move;
 
+# define LOG_MIN_CAP 64
+
+typedef struct s_log
+{
+	char	*buf;
+	size_t	len;
+	size_t	cap;
+	int		oom;
+}	t_log;
+
 typedef struct s_ops
 {
 	int		*count;
-	char	**log;
+	t_log	*log;
 }	t_ops;
 
 typedef struct s_sort_run
@@ -42,6 +52,7 @@ typedef struct s_sort_run
 }	t_sort_run;
 
 void	run_sort(t_stack **stack_a, t_sort_run *run);
+void	log_append(t_log *log, const char *op);
 
 void	apply_swap(t_stack **stack, t_ops *ops);
 void	apply_rotate(t_stack **stk, t_ops *ops);

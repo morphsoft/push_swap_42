@@ -17,8 +17,8 @@ static void	dispatch_sort(t_stack **a, unsigned char flags, t_flags *state,
 {
 	t_algo_type	algorithm;
 
-	algorithm = resolve_algorithm(state, disorder);
-	if (algorithm == ALGO_SIMPLE && ft_stack_size(*a) <= 5)
+	algorithm = resolve_algorithm(state, disorder, ft_stack_size(*a));
+	if (ft_stack_size(*a) <= 5)
 		super_small_sort(a, flags, disorder);
 	else if (algorithm == ALGO_SIMPLE)
 		simple_sort(a, flags, disorder);
